@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'prg_xml/tele_blastv.1.0.0',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '3f50c90f6503eeb0417c3e8a96a40338d6e11b75',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -227,9 +227,9 @@
             'dev_requirement' => true,
         ),
         'prg_xml/tele_blastv.1.0.0' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '3f50c90f6503eeb0417c3e8a96a40338d6e11b75',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
