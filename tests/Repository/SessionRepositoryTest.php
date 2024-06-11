@@ -23,6 +23,7 @@ class SessionRepositoryTest extends TestCase
         $this->userRepository->deleteAll();
 
         $user = new User();
+        $user->nama = "Person Test 1";
         $user->email = "balqis@email.com";
         $user->password = "blqs2103";
         $this->userRepository->save($user);

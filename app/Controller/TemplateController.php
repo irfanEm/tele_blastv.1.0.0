@@ -8,7 +8,9 @@ class TemplateController
 {
     public function index()
     {
-        return View::render("templates/index",[]);
+        return View::render("Template/index",[
+            "title" => "Template"
+        ]);
     }
 
 }

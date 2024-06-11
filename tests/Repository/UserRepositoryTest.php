@@ -21,6 +21,7 @@ class UserRepositoryTest extends TestCase
     public function testSaveSuccess()
     {
         $user = new User();
+        $user->nama = "Test Person 1";
         $user->email = "person1@user.com";
         $user->password = "rahasia";
 
@@ -28,6 +29,7 @@ class UserRepositoryTest extends TestCase
         $result = $this->userRepository->findByEmail("person1@user.com");
 
         self::assertNotNull($result);
+        self::assertEquals("Test Person 1", $result->nama);
         self::assertEquals("person1@user.com", $result->email);
         self::assertEquals("rahasia", $result->password);
         self::assertEquals(0, $result->level);
@@ -43,6 +45,7 @@ class UserRepositoryTest extends TestCase
     public function testUpdate()
     {
         $user = new User();
+        $user->nama = "Person Test 1";
         $user->email = "person1@user.com";
         $user->password = "rahasia";
 
@@ -50,6 +53,7 @@ class UserRepositoryTest extends TestCase
         $current = $this->userRepository->findByEmail($user->email);
 
         $user->id = $current->id;
+        $user->nama = "Person Test 2";
         $user->password = "123qwerty";
         $user->level = 2;
         $this->userRepository->update($user);
@@ -58,6 +62,7 @@ class UserRepositoryTest extends TestCase
         $result = $this->userRepository->findByEmail($user->email);
         
         self::assertNotNull($result);
+        self::assertEquals($user->nama, $result->nama);
         self::assertEquals($user->email, $result->email);
         self::assertEquals($user->password, $result->password);
         self::assertEquals($user->level, $result->level);

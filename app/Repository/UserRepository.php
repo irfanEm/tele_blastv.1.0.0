@@ -15,8 +15,9 @@ class UserRepository
 
     public function save(User $user): User
     {
-        $statement = $this->connection->prepare("INSERT INTO users (email, password) VALUES (?, ?)");
+        $statement = $this->connection->prepare("INSERT INTO users (nama, email, password) VALUES (?, ?, ?)");
         $statement->execute([
+            $user->nama,
             $user->email,
             $user->password
         ]);
@@ -32,6 +33,7 @@ class UserRepository
             while($row = $users->fetch()) {
                 $results [] = [
                     "id" => $row['id'],
+                    "nama" => $row['nama'],
                     "email" => $row['email'],
                     "password" => $row['password'],
                     "level" => $row['level'],
@@ -46,8 +48,9 @@ class UserRepository
     
     public function update(User $user): User
     {
-        $statement = $this->connection->prepare("UPDATE users set email = ?, password = ?, level = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?");
+        $statement = $this->connection->prepare("UPDATE users set nama = ?, email = ?, password = ?, level = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?");
         $statement -> execute([
+            $user->nama,
             $user->email,
             $user->password,
             $user->level,
@@ -58,13 +61,14 @@ class UserRepository
 
     public function findById(int $id): ?User
     {
-        $statement = $this->connection->prepare("SELECT id, email, password, level, created_at, updated_at FROM users WHERE id = ?");
+        $statement = $this->connection->prepare("SELECT id, nama, email, password, level, created_at, updated_at FROM users WHERE id = ?");
         $statement->execute([$id]);
 
         try{
             if($row = $statement->fetch()) {
                 $user = new User();
                 $user->id = $row['id'];
+                $user->nama = $row['nama'];
                 $user->email = $row['email'];
                 $user->password = $row['password'];
                 $user->level = $row['level'];
@@ -80,13 +84,14 @@ class UserRepository
 
     public function findByEmail(string $email): ?User
     {
-        $statement = $this->connection->prepare("SELECT id, email, password, level, created_at, updated_at FROM users WHERE email = ?");
+        $statement = $this->connection->prepare("SELECT id, nama, email, password, level, created_at, updated_at FROM users WHERE email = ?");
         $statement->execute([$email]);
 
         try{
             if($row = $statement->fetch()) {
                 $user = new User();
                 $user->id = $row['id'];
+                $user->nama = $row['nama'];
                 $user->email = $row['email'];
                 $user->password = $row['password'];
                 $user->level = $row['level'];

@@ -167,54 +167,6 @@
             "install-path": "../doctrine/inflector"
         },
         {
-            "name": "fortawesome/font-awesome",
-            "version": "6.5.2",
-            "version_normalized": "6.5.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/FortAwesome/Font-Awesome.git",
-                "reference": "c0f460dca7f7688761120415ff3c9cf7f73119be"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/FortAwesome/Font-Awesome/zipball/c0f460dca7f7688761120415ff3c9cf7f73119be",
-                "reference": "c0f460dca7f7688761120415ff3c9cf7f73119be",
-                "shasum": ""
-            },
-            "time": "2024-04-02T18:54:47+00:00",
-            "type": "library",
-            "installation-source": "dist",
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "CC-BY-4.0",
-                "OFL-1.1",
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "The Font Awesome Team",
-                    "homepage": "https://github.com/orgs/FortAwesome/people"
-                }
-            ],
-            "description": "The iconic font, CSS, and SVG framework",
-            "homepage": "https://fontawesome.com",
-            "keywords": [
-                "FontAwesome",
-                "awesome",
-                "bootstrap",
-                "font",
-                "icon",
-                "svg"
-            ],
-            "support": {
-                "docs": "http://fontawesome.com/docs",
-                "email": "hello@fontawesome.com",
-                "issues": "https://github.com/FortAwesome/Font-Awesome/issues",
-                "source": "https://github.com/FortAwesome/Font-Awesome"
-            },
-            "install-path": "../fortawesome/font-awesome"
-        },
-        {
             "name": "guzzlehttp/guzzle",
             "version": "7.8.1",
             "version_normalized": "7.8.1.0",
@@ -3768,7 +3720,6 @@
     "dev-package-names": [
         "carbonphp/carbon-doctrine-types",
         "doctrine/inflector",
-        "fortawesome/font-awesome",
         "guzzlehttp/guzzle",
         "guzzlehttp/promises",
         "guzzlehttp/psr7",

@@ -21,6 +21,14 @@ class SessionRepository
         return $session;
     }
 
+    public function update(Session $session): Session
+    {
+        $statement = $this->connection->prepare("UPDATE sessions set user_email = ? WHERE id = ?");
+        $statement->execute([$session->email, $session->id]);
+
+        return $session;
+    }
+
     public function findById(string $id): ?Session
     {
         $statement = $this->connection->prepare("SELECT id, user_email FROM sessions WHERE id = ?");
