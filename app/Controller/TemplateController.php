@@ -13,4 +13,11 @@ class TemplateController
         ]);
     }
 
+    public function sneat()
+    {
+        return View::render("Template/sneat", [
+            "title" => "Sneat Template"
+        ]);
+    }
+
 }
