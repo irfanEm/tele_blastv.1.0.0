@@ -24,7 +24,7 @@
 
         <!-- Vendors CSS -->
         <link rel="stylesheet" href="sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
-
+        <link rel="stylesheet" href="sneat/assets/vendor/css/pages/page-auth.css" />
         <link rel="stylesheet" href="sneat/assets/vendor/libs/apex-charts/apex-charts.css" />
 
         <!-- Page CSS -->

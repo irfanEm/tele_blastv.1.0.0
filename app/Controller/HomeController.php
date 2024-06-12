@@ -24,7 +24,7 @@ class HomeController
         $user = $this->sessionService->current();
         if($user == null) {
             View::render('Home/index', [
-                "title" => "Beranda"
+                "title" => "Login"
             ]);
         } else {
             View::render('Home/dashboard', [
