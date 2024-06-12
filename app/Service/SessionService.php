@@ -20,6 +20,7 @@ class SessionService
         $this->sessionRepository = $sessionRepository;
         $this->userRepository = $userRepository;
     }
+    
     public function create(string $email): Session
     {
 

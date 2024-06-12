@@ -25,7 +25,7 @@ class SessionRepositoryTest extends TestCase
         $user = new User();
         $user->nama = "Person Test 1";
         $user->email = "balqis@email.com";
-        $user->password = "blqs2103";
+        $user->password = "balqis@email.com";
         $this->userRepository->save($user);
     }
 
@@ -33,7 +33,7 @@ class SessionRepositoryTest extends TestCase
     {
         $session = new Session();
         $session->id = uniqid();
-        $session->email = "blqs2103";
+        $session->email = "balqis@email.com";
 
         $this->sessionRepository->save($session);
 
@@ -47,7 +47,7 @@ class SessionRepositoryTest extends TestCase
     {
         $session = new Session();
         $session->id = uniqid();
-        $session->email = "blqs2103";
+        $session->email = "balqis@email.com";
 
         $this->sessionRepository->save($session);
 
