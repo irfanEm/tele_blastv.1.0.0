@@ -68,4 +68,33 @@ class UserRepositoryTest extends TestCase
         self::assertEquals($user->level, $result->level);
     }
 
+    public function testGetAllUsers()
+    {
+        $user1 = new User();
+        $user1->nama = "Person Test 1";
+        $user1->email = "person1@user.com";
+        $user1->password = "rahasia";
+
+        $this->userRepository->save($user1);
+
+        $user2 = new User();
+        $user2->nama = "Person Test 2";
+        $user2->email = "person2@user.com";
+        $user2->password = "rahasia2";
+
+        $this->userRepository->save($user2);
+
+        $user3 = new User();
+        $user3->nama = "Person Test 3";
+        $user3->email = "person3@user.com";
+        $user3->password = "rahasia3";
+
+        $this->userRepository->save($user3);
+
+        $result = $this->userRepository->getAll();
+
+        self::assertNotNull($result);
+        self::assertCount(3, $result);
+    }
+
 }

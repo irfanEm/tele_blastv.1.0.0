@@ -1,6 +1,26 @@
 <div class="container-fluid border border-2 p-2 mt-3">
-    <div class="container-fluid p-2 border">
-        <div class="row border p-2"></div>
+    <header class="navbar navbar-dark p-2 border">
+        <h3>header section</h3>
+    </header>
+    <div class="container-fluid border">
+        <div class="row border">
+            <sidebar class="sidebar col-md-3 col-sm-12 col-xs-12 border">
+                <ul>
+                    <li>menu section</li>
+                    <li>menu section</li>
+                    <li>menu section</li>
+                    <li>menu section</li>
+                    <li><a class="btn btn-danger" href="/logout">Logout</a></li>
+                </ul>
+            </sidebar>
+            <div class="col-md-9 col-sm12 col-xs-12 border">
+                <p>bagian content</p>
+            </div>
+        </div>
     </div>
-
+    <footer class="border">
+        <div class="container border">
+            <h3>Designed By : irfanEm</h3>
+        </div>
+    </footer>
 </div>

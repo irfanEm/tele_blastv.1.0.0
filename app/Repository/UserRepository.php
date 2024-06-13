@@ -30,7 +30,7 @@ class UserRepository
         $results = [];
         $users = $this->connection->query("SELECT * FROM users");
         if($users != null){
-            while($row = $users->fetch()) {
+            while($row = $users->fetch(\PDO::FETCH_ASSOC)) {
                 $results [] = [
                     "id" => $row['id'],
                     "nama" => $row['nama'],
