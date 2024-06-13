@@ -1,5 +1,5 @@
 <div class="container-fluid mt-3 p-2 d-flex align-items-center" style="height: 100vh;">
-  <div class="container-xxl">
+  <div class="container">
     <div class="row">
       <?php if(isset($model['error'])) : ?>
       <div class="col-12">
@@ -9,22 +9,22 @@
         </div>
       </div>
       <?php endif; ?>
-      <div class="col-md-6 col-xs-12 p-2 d-flex flex-column justify-content-center">
+      <div class="col-md-6 col-xs-12 p-3">
         <div class="d-flex flex-column justify-content-center">
           <h1 class="fw-bolder px-md-3 px-sm-1 text-capitalize">Register User Tele Blast XML</h1>
           <p class="text-secondary text-decoration-none px-md-3 px-sm-1 text-capitalize">  <nbsp>by : <a href="http://instagram.com/irfan.em" class="text-decoration-none text-success fw-bold">irfanEm</a></p>
         </div>
       </div>
-      <div class="col-md-6 col-xs-12 p-2">
+      <div class="col-md-6 col-xs-12 p-3">
         <div class="d-flex flex-column justify-content-center p-3 rounded-3 shadow-lg">
           <form action="/user/daftar" method="post">
           <div class="my-3">
               <label for="nama" class="form-label fw-bold">Nama Lengkap</label>
-              <input type="text" class="form-control text-secondary" id="nama" name="nama" placeholder="Abdul Mutholib">
+              <input type="text" class="form-control text-secondary" id="nama" name="nama" placeholder="Nama Lengkap">
           </div>
           <div class="mb-3">
               <label for="email" class="form-label fw-bold">Email </label>
-              <input type="email" class="form-control text-secondary" id="email" name="email" placeholder="abdulmutholib@email.com">
+              <input type="email" class="form-control text-secondary" id="email" name="email" placeholder="Alamat Email">
           </div>
           <div class="mb-3">
               <label for="password" class="form-label fw-bold">Password </label>
