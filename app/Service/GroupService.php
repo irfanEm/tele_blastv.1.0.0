@@ -5,6 +5,7 @@ namespace IRFANEM\TELE_BLAST\Service;
 use Exception;
 use IRFANEM\TELE_BLAST\Domain\Group;
 use IRFANEM\TELE_BLAST\Config\Database;
+use IRFANEM\TELE_BLAST\Model\GroupDeleteRequest;
 use IRFANEM\TELE_BLAST\Model\GroupTambahRequest;
 use IRFANEM\TELE_BLAST\Model\GroupUpdateRequest;
 use IRFANEM\TELE_BLAST\Model\GroupTambahResponse;
@@ -27,6 +28,12 @@ class GroupService
 
         try{
             Database::beginTransaction();
+
+            $group = $this->groupRepository->findById($request->id);
+            if($group != null){
+                throw new ValidationException("Id group sudah digunakan !");
+            }
+
             $group = new Group();
             $group->id = $request->id;
             $group->nama = $request->nama;
@@ -59,7 +66,11 @@ class GroupService
 
         try{
             Database::beginTransaction();
-            $group = new Group();
+            $group = $this->groupRepository->findById($request->id);
+            if($group == null){
+                throw new ValidationException("Group Id tidak ditemukan !");
+            }
+
             $group->nama = $request->nama;
             $group->username = $request->username;
 
@@ -80,6 +91,31 @@ class GroupService
     {
         if($request->nama == null || $request->username == null || trim($request->nama) == "" || trim($request->username) == ""){
             throw new ValidationException("Nama dan Username tidak boleh kosong !");
+        }
+    }
+
+    public function deleteById(GroupDeleteRequest $request): void
+    {
+        $this->validateHapusById($request);
+
+        try{
+            Database::beginTransaction();
+
+            $group = new Group();
+            $group->id = $request->id;
+
+            $this->groupRepository->deleteById($group->id);
+            Database::commitTransactiion();
+        }catch(Exception $e){
+            Database::rollbackTransaction();
+            throw $e;
+        }
+    }
+
+    private function validateHapusById(GroupDeleteRequest $request): void
+    {
+        if($request->id == null || trim($request->id) == ""){
+            throw new ValidationException("Group Id tidak ditemukan !");
         }
     }
 
