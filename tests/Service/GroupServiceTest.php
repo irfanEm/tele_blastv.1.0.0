@@ -10,6 +10,7 @@ use IRFANEM\TELE_BLAST\Model\GroupTambahRequest;
 use IRFANEM\TELE_BLAST\Repository\GroupRepository;
 use IRFANEM\TELE_BLAST\Exception\ValidationException;
 use IRFANEM\TELE_BLAST\Model\GroupDeleteRequest;
+use IRFANEM\TELE_BLAST\Model\GroupGetByIdRequest;
 use IRFANEM\TELE_BLAST\Model\GroupUpdateRequest;
 
 class GroupServiceTest extends TestCase
@@ -155,6 +156,42 @@ class GroupServiceTest extends TestCase
 
         $result = $this->groupRepository->findById($group->id);
         self::assertNotNull($result);
+    }
+
+    public function testGetGroupById()
+    {
+        $group = new Group();
+        $group->id = '-210321';
+        $group->nama = 'Group Balqis FA';
+        $group->username = 't.me/balqis_fa';
+
+        $this->groupRepository->save($group);
+
+        $request = new GroupGetByIdRequest();
+        $request->id = $group->id;
+        $response = $this->groupService->getGroupById($request);
+
+        self::assertNotNull($response);
+        self::assertEquals($group->id, $response->group->id);
+        self::assertEquals($group->nama, $response->group->nama);
+        self::assertEquals($group->username, $response->group->username);
+    }
+
+    public function testGetGroupByIdValidationException()
+    {
+        $group = new Group();
+        $group->id = '-210321';
+        $group->nama = 'Group Balqis FA';
+        $group->username = 't.me/balqis_fa';
+
+        $this->groupRepository->save($group);
+        
+        self::expectException(ValidationException::class);
+        self::expectExceptionMessage("Group Id tidak ditemukan !");
+        
+        $request = new GroupGetByIdRequest();
+        $request->id = "";
+        $this->groupService->getGroupById($request);
     }
 
 }

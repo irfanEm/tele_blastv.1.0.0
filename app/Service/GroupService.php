@@ -8,10 +8,12 @@ use IRFANEM\TELE_BLAST\Config\Database;
 use IRFANEM\TELE_BLAST\Model\GroupDeleteRequest;
 use IRFANEM\TELE_BLAST\Model\GroupTambahRequest;
 use IRFANEM\TELE_BLAST\Model\GroupUpdateRequest;
+use IRFANEM\TELE_BLAST\Model\GroupGetByIdRequest;
 use IRFANEM\TELE_BLAST\Model\GroupTambahResponse;
 use IRFANEM\TELE_BLAST\Model\GroupUpdateResponse;
 use IRFANEM\TELE_BLAST\Repository\GroupRepository;
 use IRFANEM\TELE_BLAST\Exception\ValidationException;
+use IRFANEM\TELE_BLAST\Model\GroupGetByIdResponse;
 
 class GroupService
 {
@@ -20,6 +22,11 @@ class GroupService
     public function __construct()
     {
         $this->groupRepository = new GroupRepository(Database::getConnection());
+    }
+
+    public function getGroups(): array
+    {
+        return $this->groupRepository->getAll();
     }
 
     public function tambahGrup(GroupTambahRequest $request): GroupTambahResponse
@@ -113,6 +120,35 @@ class GroupService
     }
 
     private function validateHapusById(GroupDeleteRequest $request): void
+    {
+        if($request->id == null || trim($request->id) == ""){
+            throw new ValidationException("Group Id tidak ditemukan !");
+        }
+    }
+
+    public function getGroupById(GroupGetByIdRequest $request): GroupGetByIdResponse
+    {
+        $this->validateGetGroupById($request);
+        try{
+            Database::beginTransaction();
+
+            $group = new Group();
+            $group->id = $request->id;
+
+            $group = $this->groupRepository->findById($group->id);
+
+            Database::commitTransactiion();
+
+            $response = new GroupGetByIdResponse();
+            $response->group = $group;
+            return $response;
+        }catch(Exception $e){
+            Database::rollbackTransaction();
+            throw $e;
+        }
+    }
+
+    private function validateGetGroupById(GroupGetByIdRequest $request): void
     {
         if($request->id == null || trim($request->id) == ""){
             throw new ValidationException("Group Id tidak ditemukan !");

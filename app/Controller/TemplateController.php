@@ -20,4 +20,9 @@ class TemplateController
         ]);
     }
 
+    public function test(int $id): void
+    {
+        echo "testing id = $id";
+    }
+
 }

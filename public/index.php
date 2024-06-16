@@ -19,4 +19,6 @@ Router::add("GET", "/user/login", UserController::class, "login", [MustNotLoginM
 Router::add("POST", "/user/login", UserController::class, "postLogin", [MustNotLoginMiddleware::class]);
 Router::add("GET", "/logout", UserController::class, "logout", [MustLoginMiddleware::class]);
 
+Router::add("GET", "/test/id/([0-9a-zA-Z]*)", TemplateController::class, "test", []);
+
 Router::run();
