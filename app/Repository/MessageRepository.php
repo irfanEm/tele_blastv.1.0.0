@@ -51,10 +51,10 @@ class MessageRepository
         return $message;
     }
 
-    public function delete(Message $message): void
+    public function delete(string $id): void
     {
         $statement = $this->connection->prepare("DELETE FROM messages WHERE id = ?");
-        $statement->execute([$message->id]);
+        $statement->execute([$id]);
     }
 
     public function getAll(): array
