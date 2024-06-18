@@ -39,6 +39,8 @@ class BroadcastMessageRepositoryTest extends TestCase
         $this->groupId = $group->id;
 
         $this->bcRepository->deleteAll();
+        $this->groupRepository->deleteAll();
+        $this->messageRepository->deleteAll();
     }
 
     public function testSaveSuccess()
@@ -61,6 +63,97 @@ class BroadcastMessageRepositoryTest extends TestCase
         self::assertEquals($result->status, $bcMessage->status);
 
         var_dump($result);
+    }
+
+    public function testUpdate()
+    {
+        $group = new Group();
+        $group->id = '-170303';
+        $this->groupRepository->update($group);
+
+        $message = new Message();
+        $message->id = uniqid();
+        $this->messageRepository->update($message);
+
+        $bcMessage = new BroadcastMessage();
+        $bcMessage->id = uniqid();
+        $bcMessage->groupId = $this->groupId;
+        $bcMessage->messageId = $this->messageId;
+        $bcMessage->waktu = '2024-11-27 12:00:00';
+        $bcMessage->status = 1;
+        $this->bcRepository->save($bcMessage);
+
+        $bcMessage->groupId = $group->id;
+        $bcMessage->messageId = $message->id;
+        $bcMessage->waktu = '2024-11-26 15:00:00';
+        $bcMessage->status = 0;
+
+        $this->bcRepository->update($bcMessage);
+
+        $result = $this->bcRepository->findById($bcMessage->id);
+
+        self::assertNotNull($result);
+        self::assertEquals($result->groupId, $bcMessage->groupId);
+        self::assertEquals($result->messageId, $bcMessage->messageId);
+        self::assertEquals($result->waktu, $bcMessage->waktu);
+        self::assertEquals($result->status, $bcMessage->status);
+    }
+
+    public function testDeleteById()
+    {
+        $bcMessage = new BroadcastMessage();
+        $bcMessage->id = uniqid();
+        $bcMessage->groupId = $this->groupId;
+        $bcMessage->messageId = $this->messageId;
+        $bcMessage->waktu = '2024-11-27 12:00:00';
+        $bcMessage->status = 1;
+        $this->bcRepository->save($bcMessage);
+
+        $this->bcRepository->delete($bcMessage->id);
+
+        $result = $this->bcRepository->findById($bcMessage->id);
+
+        self::assertNull($result);
+    }
+
+    public function getAll()
+    {
+        $bcMessage = new BroadcastMessage();
+        $bcMessage->id = uniqid();
+        $bcMessage->groupId = $this->groupId;
+        $bcMessage->messageId = $this->messageId;
+        $bcMessage->waktu = '2024-11-27 12:00:00';
+        $bcMessage->status = 1;
+        $this->bcRepository->save($bcMessage);
+
+        $group1 =  new Group();
+        $group1->id = uniqid();
+        $group1->nama = 'grupTest01';
+        $group1->username = 't.me/grup_test01';
+        $this->groupRepository->save($group1);
+
+        $bcMessage = new BroadcastMessage();
+        $bcMessage->id = uniqid();
+        $bcMessage->groupId = $this->groupId;
+        $bcMessage->messageId = $this->messageId;
+        $bcMessage->waktu = '2024-11-27 12:00:00';
+        $bcMessage->status = 1;
+        $this->bcRepository->save($bcMessage);
+
+        $group2 =  new Group();
+        $group2->id = uniqid();
+        $group2->nama = 'grupTest02';
+        $group2->username = 't.me/grup_test02';
+        $this->groupRepository->save($group2);
+
+        $bcMessage = new BroadcastMessage();
+        $bcMessage->id = uniqid();
+        $bcMessage->groupId = $this->groupId;
+        $bcMessage->messageId = $this->messageId;
+        $bcMessage->waktu = '2024-11-27 12:00:00';
+        $bcMessage->status = 1;
+        $this->bcRepository->save($bcMessage);
+
     }
 
 }
