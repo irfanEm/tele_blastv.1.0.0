@@ -21,7 +21,7 @@ class MessageService
         $this->messageRepository = $messageRepository;
     }
 
-    public function addGroup(MessageAddRequest $request): MessageAddResponse
+    public function addMessage(MessageAddRequest $request): MessageAddResponse
     {
         $this->validateAddMessage($request);
 
