@@ -20,6 +20,10 @@ class BroadcastMessageRepositoryTest extends TestCase
 
     protected function setUp(): void
     {
+        $this->messageRepository = new MessageRepository(Database::getConnection());
+        $this->groupRepository = new GroupRepository(Database::getConnection());
+        $this->bcRepository = new BroadcastMessageRepository(Database::getConnection());
+
         $group = new Group();
         $group->id = '-210321';
         $group->nama = 'BalqisGroup';
@@ -34,7 +38,6 @@ class BroadcastMessageRepositoryTest extends TestCase
         
         $this->messageRepository->save($message);
 
-        $this->bcRepository = new BroadcastMessageRepository(Database::getConnection());
         $this->messageId = $message->id;
         $this->groupId = $group->id;
 
@@ -49,7 +52,7 @@ class BroadcastMessageRepositoryTest extends TestCase
         $bcMessage->id = uniqid();
         $bcMessage->groupId = $this->groupId;
         $bcMessage->messageId = $this->messageId;
-        $bcMessage->waktu = '2024-11-27 12:00:00';
+        $bcMessage->waktu = '12:00:00';
         $bcMessage->status = 1;
 
         $this->bcRepository->save($bcMessage);
@@ -61,31 +64,21 @@ class BroadcastMessageRepositoryTest extends TestCase
         self::assertEquals($result->messageId, $bcMessage->messageId);
         self::assertEquals($result->waktu, $bcMessage->waktu);
         self::assertEquals($result->status, $bcMessage->status);
-
-        var_dump($result);
     }
 
     public function testUpdate()
     {
-        $group = new Group();
-        $group->id = '-170303';
-        $this->groupRepository->update($group);
-
-        $message = new Message();
-        $message->id = uniqid();
-        $this->messageRepository->update($message);
-
         $bcMessage = new BroadcastMessage();
         $bcMessage->id = uniqid();
         $bcMessage->groupId = $this->groupId;
         $bcMessage->messageId = $this->messageId;
-        $bcMessage->waktu = '2024-11-27 12:00:00';
+        $bcMessage->waktu = '12:00:00';
         $bcMessage->status = 1;
         $this->bcRepository->save($bcMessage);
 
-        $bcMessage->groupId = $group->id;
-        $bcMessage->messageId = $message->id;
-        $bcMessage->waktu = '2024-11-26 15:00:00';
+        $bcMessage->groupId = uniqid();
+        $bcMessage->messageId = uniqid();
+        $bcMessage->waktu = '15:00:00';
         $bcMessage->status = 0;
 
         $this->bcRepository->update($bcMessage);
@@ -105,7 +98,7 @@ class BroadcastMessageRepositoryTest extends TestCase
         $bcMessage->id = uniqid();
         $bcMessage->groupId = $this->groupId;
         $bcMessage->messageId = $this->messageId;
-        $bcMessage->waktu = '2024-11-27 12:00:00';
+        $bcMessage->waktu = '12:00:00';
         $bcMessage->status = 1;
         $this->bcRepository->save($bcMessage);
 
@@ -116,7 +109,7 @@ class BroadcastMessageRepositoryTest extends TestCase
         self::assertNull($result);
     }
 
-    public function getAll()
+    public function testGetAll()
     {
         $bcMessage = new BroadcastMessage();
         $bcMessage->id = uniqid();
@@ -153,6 +146,11 @@ class BroadcastMessageRepositoryTest extends TestCase
         $bcMessage->waktu = '2024-11-27 12:00:00';
         $bcMessage->status = 1;
         $this->bcRepository->save($bcMessage);
+
+        $result = $this->bcRepository->getAll();
+
+        self::assertNotNull($result);
+        self::assertCount(3, $result);
 
     }
 

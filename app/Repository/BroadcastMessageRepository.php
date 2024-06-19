@@ -15,12 +15,12 @@ class BroadcastMessageRepository
 
     public function save(BroadcastMessage $broadcastMessage): BroadcastMessage
     {
-        $statement = $this->connection->prepare("INSERT INTO broadcast_messages (id, id_pesan, id_group, waktu, status) VALUES (?, ?, ?, ?)");
+        $statement = $this->connection->prepare("INSERT INTO broadcast_messages (id, id_pesan, id_group, waktu, status) VALUES (?, ?, ?, ?, ?)");
         $statement->execute([
             $broadcastMessage->id, 
             $broadcastMessage->messageId, 
             $broadcastMessage->groupId, 
-            $broadcastMessage->waktu->format('H:i:s'), 
+            $broadcastMessage->waktu, 
             $broadcastMessage->status
         ]);
 
@@ -33,7 +33,7 @@ class BroadcastMessageRepository
         $statement->execute([
             $broadcastMessage->messageId, 
             $broadcastMessage->groupId, 
-            $broadcastMessage->waktu->format("H:i:s"), 
+            $broadcastMessage->waktu, 
             $broadcastMessage->status, 
             $broadcastMessage->id
         ]);

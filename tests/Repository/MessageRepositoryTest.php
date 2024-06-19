@@ -56,6 +56,8 @@ class MessageRepositoryTest extends TestCase
         
         Quibusdam incidunt delectus debitis dolor. Et corrupti optio veniam officia. Exercitationem culpa maiores qui eveniet et eum harum ut quae.';
 
+        $this->messageRepository->update($msg);
+
         $result = $this->messageRepository->findById($msg->id);
 
         self::assertNotNull($result);
@@ -80,7 +82,7 @@ class MessageRepositoryTest extends TestCase
         self::assertNull($result);
     }
 
-    public function testGetAllUsers()
+    public function testGetAllMessages()
     {
         $msg = new Message();
         $msg->id = uniqid();

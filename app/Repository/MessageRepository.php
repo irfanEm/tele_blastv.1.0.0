@@ -22,7 +22,7 @@ class MessageRepository
         return $message;
     }
 
-    public function findById(string $id): Message
+    public function findById(string $id): ?Message
     {
         $statement = $this->connection->prepare("SELECT id, judul, pesan FROM messages WHERE id = ?");
         $statement->execute([$id]);
@@ -59,7 +59,7 @@ class MessageRepository
 
     public function getAll(): array
     {
-        $statement = $this->connection->query("SELECT id, judul, pesan, created_at, updated_at");
+        $statement = $this->connection->query("SELECT id, judul, pesan, created_at, updated_at FROM messages");
         $messages = [];
         if($statement !== null){
             while ($row = $statement->fetch()) {

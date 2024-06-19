@@ -9,6 +9,6 @@ class BroadcastMessage
     public string $id;
     public string $messageId;
     public string $groupId;
-    public DateTime $waktu;
+    public string $waktu;
     public int $status;
 }
