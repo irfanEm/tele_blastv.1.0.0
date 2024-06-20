@@ -33,7 +33,7 @@ class BroadcastMessageService
             }
 
             $broadcastMessage = new BroadcastMessage();
-            $broadcastMessage->id = uniqid();
+            $broadcastMessage->id = $request->id;
             $broadcastMessage->messageId = $request->messageId;
             $broadcastMessage->groupId = $request->groupId;
             $broadcastMessage->waktu = $request->waktu;
@@ -55,8 +55,8 @@ class BroadcastMessageService
 
     protected function validateSimpanBc(BCAddRequest $request)
     {
-        if($request->messageId == null || $request->groupId == null || $request->waktu == null || $request->status == null ||
-        trim($request->messageId) == "" || count($request->groupId) == 0 || trim($request->waktu) == "" || trim($request->status) == "")
+        if($request->id == null || $request->messageId == null || $request->groupId == null || $request->waktu == null || $request->status == null ||
+        trim($request->id) == "" || trim($request->messageId) == "" || trim($request->groupId) == "" || trim($request->waktu) == "" || trim($request->status) == "")
         {
             throw new ValidationException("Id pesan, group, waktu dan status wajib diisi !");
         }
@@ -96,7 +96,7 @@ class BroadcastMessageService
     protected function validateUpdateBc(BCUpdateRequest $request): void
     {
         if($request->messageId == null || $request->groupId == null || $request->waktu == null || $request->status == null ||
-        trim($request->messageId) == "" || count($request->groupId) == 0 || trim($request->waktu) == "" || trim($request->status) == "")
+        trim($request->messageId) == "" || trim($request->groupId) == "" || trim($request->waktu) == "" || trim($request->status) == "")
         {
             throw new ValidationException("Id pesan, group, waktu dan status wajib diisi !");
         }
@@ -104,7 +104,34 @@ class BroadcastMessageService
 
     public function deleteBcMessage(string $id)
     {
-        $this->broadcastMessageRepository->delete($id);
+
+        // $this->broadcastMessageRepository->delete($id);
+
+        $this->validateDeleteBroadcastMessage($id);
+
+        $bcMessage = $this->broadcastMessageRepository->findById($id);
+
+        if($bcMessage === null){
+            throw new ValidationException("Id tidak ditemukan !");
+        }
+
+        try{
+            Database::beginTransaction();
+
+            $this->broadcastMessageRepository->delete($id);
+
+            Database::rollbackTransaction();
+        }catch(\Exception $e){
+            Database::rollbackTransaction();
+            throw $e;
+        }
+    }
+
+    protected function validateDeleteBroadcastMessage(string $id)
+    {
+        if($id == null || trim($id) == ''){
+            throw new ValidationException("Id tidak boleh kosong !");
+        }
     }
 
 }

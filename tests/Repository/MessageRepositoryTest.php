@@ -32,6 +32,8 @@ class MessageRepositoryTest extends TestCase
         self::assertEquals($msg->id, $result->id);
         self::assertEquals($msg->judul, $result->judul);
         self::assertEquals($msg->pesan, $result->pesan);
+
+        var_dump($result);
     }
 
     public function testFindByIdNotFound()

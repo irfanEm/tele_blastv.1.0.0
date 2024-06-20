@@ -29,7 +29,7 @@ class MessageService
             Database::beginTransaction();
 
             $message = $this->messageRepository->findById($request->id);
-            if($message == null) {
+            if($message !== null) {
                 throw new ValidationException('Id pesan sudah ada !');
             }
 
@@ -57,7 +57,7 @@ class MessageService
         if($request->id == null || $request->judul == null || $request->pesan == null ||
         trim($request->id == "") || trim($request->judul == "") || trim($request->pesan == ""))
         {
-            return new ValidationException("Id, judul dan pesan tidak boleh kosong !");
+            throw new ValidationException("Id, judul dan pesan tidak boleh kosong !");
         }
     }
 
@@ -100,7 +100,32 @@ class MessageService
 
     public function deleteMessage(string $id): void
     {
-        $this->messageRepository->delete($id);
+        $this->validateDeleteMessage($id);
+
+        $message = $this->messageRepository->findById($id);
+
+        if($message === null){
+            throw new ValidationException("Id pesan tidak ditemukan !");
+        }
+
+        try{
+            Database::beginTransaction();
+
+            $this->messageRepository->delete($id);
+
+            Database::commitTransactiion();
+        }catch(\Exception $e){
+            Database::rollbackTransaction();
+            throw $e;
+        }
+    }
+
+    protected function validateDeleteMessage(string $id)
+    {
+        if($id == null || trim($id == ""))
+        {
+            return new ValidationException("Id pesan tidak boleh kosong !");
+        }
     }
 
 }
