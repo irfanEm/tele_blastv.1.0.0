@@ -21,3 +21,11 @@ class Alert
     }
 
 }
+
+class MethodHelper
+{
+    public static function arrayToString(array $data)
+    {
+        
+    }
+}

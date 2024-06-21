@@ -20,6 +20,11 @@ class BroadcastMessageService
         $this->broadcastMessageRepository = $broadcastMessageRepository;
     }
 
+    public function getAllBc()
+    {
+        return $this->broadcastMessageRepository->getAll();
+    }
+
     public function simpanBc(BCAddRequest $request): BCAddResponse
     {
         $this->validateSimpanBC($request);
@@ -120,7 +125,7 @@ class BroadcastMessageService
 
             $this->broadcastMessageRepository->delete($id);
 
-            Database::rollbackTransaction();
+            Database::commitTransactiion();
         }catch(\Exception $e){
             Database::rollbackTransaction();
             throw $e;

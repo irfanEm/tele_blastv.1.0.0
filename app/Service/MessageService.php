@@ -21,6 +21,16 @@ class MessageService
         $this->messageRepository = $messageRepository;
     }
 
+    public function getAllMessages()
+    {
+        return $this->messageRepository->getAll();
+    }
+
+    public function currentMessage(string $id)
+    {
+        return $this->messageRepository->findById($id);
+    }
+
     public function addMessage(MessageAddRequest $request): MessageAddResponse
     {
         $this->validateAddMessage($request);
