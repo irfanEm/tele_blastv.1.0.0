@@ -25,6 +25,11 @@ class BroadcastMessageService
         return $this->broadcastMessageRepository->getAll();
     }
 
+    public function getCurrent(string $id): BroadcastMessage
+    {
+        return $this->broadcastMessageRepository->findById($id);
+    }
+
     public function simpanBc(BCAddRequest $request): BCAddResponse
     {
         $this->validateSimpanBC($request);
