@@ -13,6 +13,13 @@ class TemplateController
         ]);
     }
 
+    public function index_ku()
+    {
+        return View::render("Template/templat-ku",[
+            "title" => "Templat-Ku"
+        ]);
+    }
+
     public function sneat()
     {
         return View::render("Template/sneat", [

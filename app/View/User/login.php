@@ -9,6 +9,7 @@
         </div>
       </div>
       <?php endif; ?>
+      
       <div class="col-md-6 col-xs-12 p-3">
         <div class="d-flex flex-column justify-content-center">
           <h1 class="fw-bolder px-md-3 px-sm-1 text-capitalize">Login User Tele Blast XML</h1>
@@ -17,6 +18,9 @@
       </div>
       <div class="col-md-6 col-xs-12 p-3">
         <div class="d-flex flex-column justify-content-center p-3 rounded-3 shadow-lg">
+          <div class="col-12 rounded p-2 my-3">
+            <h2 style="font-family: poppins;" class="fw-semibold">Tele-Blast XML v.1.0.0</h2>
+          </div>
           <form action="/user/login" method="post">
           <div class="my-3">
               <!-- <label for="email" class="form-label fw-bold">Email </label> -->
@@ -30,8 +34,8 @@
               </div>
           </div>
           <div class="my-2 d-flex justify-content-between align-items-end flex-sm-wrap">
-              <p class="text-secondary order-sm-2 order-lg-1 order-xl-1 order-xxl-1 mt-sm-2" style="font-size:.9em;">Belum punya akun ?<a href="/user/daftar" class="text-secondary fw-semibold text-decoration-none"> daftar disini.</a></p>
-              <button type="submit" class="btn btn-outline-success px-5 fw-bold order-sm-1 order-lg-2 order-xl-2 order-xxl-2 flex-sm-fill">Login</button>
+              <p class="text-secondary mt-sm-2" style="font-size:.9em;">Belum punya akun ?<a href="/user/daftar" class="text-secondary fw-semibold text-decoration-none"> daftar disini.</a></p>
+              <button type="submit" class="btn btn-outline-success px-5 fw-bold">Login</button>
           </div>
           </form>
         </div>

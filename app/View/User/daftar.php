@@ -17,6 +17,9 @@
       </div>
       <div class="col-md-6 col-xs-12 p-3">
         <div class="d-flex flex-column justify-content-center p-3 rounded-3 shadow-lg">
+          <div class="col-12 rounded p-2 my-3">
+            <h2 style="font-family: poppins;" class="fw-bold">Tele-Blast XML v.1.0.0</h2>
+          </div>
           <form action="/user/daftar" method="post">
           <div class="my-3">
               <!-- <label for="nama" class="form-label fw-bold">Nama Lengkap</label> -->

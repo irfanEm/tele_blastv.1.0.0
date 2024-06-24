@@ -11,6 +11,7 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 Router::add("GET", "/", HomeController::class, "index", []);
 Router::add("GET", "/template", TemplateController::class, "index", []);
+Router::add("GET", "/template-ku", TemplateController::class, "index_ku", []);
 Router::add("GET", "/template-sneat", TemplateController::class, "sneat", []);
 
 Router::add("GET", "/user/daftar", UserController::class, "daftar", [MustNotLoginMiddleware::class]);
