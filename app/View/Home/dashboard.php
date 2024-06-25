@@ -19,8 +19,6 @@
         </div>
     </div>
     <footer class="border">
-        <div class="container border">
-            <h3>Designed By : irfanEm</h3>
-        </div>
+        <h3>Designed By : irfanEm</h3>
     </footer>
 </div>
