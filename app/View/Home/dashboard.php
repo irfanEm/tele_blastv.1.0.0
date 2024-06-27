@@ -1,15 +1,15 @@
 <div class="container-fluid border border-2 p-2 mt-3">
     <header class="navbar navbar-dark p-2 border">
-        <h3>header section</h3>
+        <h3>header section <?= $model['user']['name'] ?></h3>
     </header>
     <div class="container-fluid border">
         <div class="row border">
             <sidebar class="sidebar col-md-3 col-sm-12 col-xs-12 border">
                 <ul>
-                    <li>menu section</li>
-                    <li>menu section</li>
-                    <li>menu section</li>
-                    <li>menu section</li>
+                    <li><a href="/">Dashboard</a></li>
+                    <li><a href="/group">Group Telegram</a></li>
+                    <li><a href="/pesan">Template Pesan</a></li>
+                    <li><a href="/broadcast-pesan">Broadcast Pesan</a></li>
                     <li><a class="btn btn-danger" href="/logout">Logout</a></li>
                 </ul>
             </sidebar>

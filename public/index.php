@@ -1,6 +1,7 @@
 <?php
 
 use IRFANEM\TELE_BLAST\App\Router;
+use IRFANEM\TELE_BLAST\Controller\GroupController;
 use IRFANEM\TELE_BLAST\Controller\HomeController;
 use IRFANEM\TELE_BLAST\Controller\UserController;
 use IRFANEM\TELE_BLAST\Controller\TemplateController;
@@ -19,6 +20,8 @@ Router::add("POST", "/user/daftar", UserController::class, "posDaftar", [MustNot
 Router::add("GET", "/user/login", UserController::class, "login", [MustNotLoginMiddleware::class]);
 Router::add("POST", "/user/login", UserController::class, "postLogin", [MustNotLoginMiddleware::class]);
 Router::add("GET", "/logout", UserController::class, "logout", [MustLoginMiddleware::class]);
+
+Router::add("GET", "/group", GroupController::class, "index", [MustLoginMiddleware::class]);
 
 Router::add("GET", "/test/id/([0-9a-zA-Z]*)", TemplateController::class, "test", []);
 
