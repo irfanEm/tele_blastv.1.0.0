@@ -1,9 +1,10 @@
 <?php
 
 use IRFANEM\TELE_BLAST\App\Router;
-use IRFANEM\TELE_BLAST\Controller\GroupController;
 use IRFANEM\TELE_BLAST\Controller\HomeController;
 use IRFANEM\TELE_BLAST\Controller\UserController;
+use IRFANEM\TELE_BLAST\Controller\GroupController;
+use IRFANEM\TELE_BLAST\Controller\MessageController;
 use IRFANEM\TELE_BLAST\Controller\TemplateController;
 use IRFANEM\TELE_BLAST\Middleware\MustLoginMiddleware;
 use IRFANEM\TELE_BLAST\Middleware\MustNotLoginMiddleware;
@@ -22,6 +23,14 @@ Router::add("POST", "/user/login", UserController::class, "postLogin", [MustNotL
 Router::add("GET", "/logout", UserController::class, "logout", [MustLoginMiddleware::class]);
 
 Router::add("GET", "/group", GroupController::class, "index", [MustLoginMiddleware::class]);
+Router::add("GET", "/group/add", GroupController::class, "tambah", [MustLoginMiddleware::class]);
+Router::add("POST", "/group", GroupController::class, "postTambah", [MustLoginMiddleware::class]);
+Router::add("GET", "/group/edit/(-\d{10})", GroupController::class, "update", [MustLoginMiddleware::class]);
+Router::add("POST", "/group/edit", GroupController::class, "postUpdate", [MustLoginMiddleware::class]);
+Router::add("GET", "/group/hapus/(-\d{10})", GroupController::class, "hapus", [MustLoginMiddleware::class]);
+
+Router::add("GET", "/pesan", MessageController::class, "index", [MustLoginMiddleware::class]);
+Router::add("GET", "/broadcast", GroupController::class, "index", [MustLoginMiddleware::class]);
 
 Router::add("GET", "/test/id/([0-9a-zA-Z]*)", TemplateController::class, "test", []);
 

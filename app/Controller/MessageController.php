@@ -23,7 +23,7 @@ class MessageController
     public function index()
     {
         $messages = $this->messageService->getAllMessages();
-        View::render('Message/index', [
+        View::render('Pesan/index', [
             'title' => 'Data Pesan',
             'messages' => $messages
         ]);

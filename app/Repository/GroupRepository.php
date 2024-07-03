@@ -28,7 +28,7 @@ class GroupRepository
     public function getAll(): array
     {
         $groups = [];
-        $result = $this->connection->query("SELECT id, nama, username, created_at, updated_at FROM groups");
+        $result = $this->connection->query("SELECT id, nama, username, created_at, updated_at FROM groups ORDER BY created_at DESC");
         if($result != null){
             while($row = $result->fetch(\PDO::FETCH_ASSOC)){
                 $groups[] = [

@@ -4,6 +4,7 @@ namespace IRFANEM\TELE_BLAST\Controller;
 
 use IRFANEM\TELE_BLAST\App\View;
 use IRFANEM\TELE_BLAST\Config\Database;
+use IRFANEM\TELE_BLAST\Model\GroupDeleteRequest;
 use IRFANEM\TELE_BLAST\Model\GroupGetByIdRequest;
 use IRFANEM\TELE_BLAST\Model\GroupTambahRequest;
 use IRFANEM\TELE_BLAST\Model\GroupUpdateRequest;
@@ -63,7 +64,7 @@ class GroupController
         $request->id = $id;
         $response = $this->groupService->getGroupById($request);
 
-        View::render('Group/update',[
+        View::render('Group/edit',[
             'title' => 'Update Group',
             'id' => $response->group->id,
             'nama' => $response->group->nama,
@@ -82,12 +83,26 @@ class GroupController
             $this->groupService->updateGroup($request);
             View::redirect('/group');
         }catch(\Exception $e){
+            View::render('Group/edit',[
+                'title' => 'Tambah Group',
+                'error' => $e->getMessage()
+            ]);
+        }
+    }
+
+    public function hapus(string $id)
+    {
+        $request = new GroupDeleteRequest();
+        $request->id = htmlspecialchars($id);
+        try{
+            $this->groupService->deleteById($request);
+            View::redirect("/group");
+        }catch (\Exception $e){
             View::render('Group/tambah',[
                 'title' => 'Tambah Group',
                 'error' => $e->getMessage()
             ]);
         }
-
     }
 
 }

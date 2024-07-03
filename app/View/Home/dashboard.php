@@ -1,6 +1,11 @@
 <div class="container-fluid border border-2 p-2 mt-3">
     <header class="navbar navbar-dark p-2 border">
         <h3>header section <?= $model['user']['name'] ?></h3>
+        <div class="navbar-nav">
+            <div class="nav-item text-nowrap">
+            <a class="nav-link px-3 text-dark" href="/logout">Sign out</a>
+            </div>
+        </div>
     </header>
     <div class="container-fluid border">
         <div class="row border">
