@@ -4,6 +4,7 @@ namespace IRFANEM\TELE_BLAST\Controller;
 
 use IRFANEM\TELE_BLAST\App\View;
 use IRFANEM\TELE_BLAST\Config\Database;
+use IRFANEM\TELE_BLAST\Helper\Alert;
 use IRFANEM\TELE_BLAST\Model\GroupDeleteRequest;
 use IRFANEM\TELE_BLAST\Model\GroupGetByIdRequest;
 use IRFANEM\TELE_BLAST\Model\GroupTambahRequest;
@@ -81,12 +82,14 @@ class GroupController
 
         try{
             $this->groupService->updateGroup($request);
+            Alert::setFlash("alert", ["success" => "Data berhasil di edit."]);
+
+            Alert::getFlash("alert");
             View::redirect('/group');
         }catch(\Exception $e){
-            View::render('Group/edit',[
-                'title' => 'Tambah Group',
-                'error' => $e->getMessage()
-            ]);
+            $error = $e->getMessage();
+            Alert::setFlash("alert", ["danger" => "Data gagal diedit : $error"]);
+            View::redirect("group/edit/$request->id");
         }
     }
 

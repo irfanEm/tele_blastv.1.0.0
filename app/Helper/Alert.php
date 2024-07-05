@@ -4,24 +4,43 @@ namespace IRFANEM\TELE_BLAST\Helper;
 
 class Alert
 {
-    private string $nama;
-    private string $tipe;
-    private string $pesan;
-
-    public function __construct($nama, $tipe, $pesan)
+    public static function start()
     {
-        $this->nama = $nama;
-        $this->tipe = $tipe;
-        $this->pesan = $pesan;
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
     }
 
-    public function getAlert(): array
+    public static function set($key, $value)
     {
-        return [
-            'nama' => $this->nama,
-            'tipe' => $this->tipe,
-            'pesan' => $this->pesan
-        ];
+        self::start();
+        $_SESSION[$key] = $value;
+    }
+
+    public static function get($key)
+    {
+        self::start();
+        return isset($_SESSION[$key]) ? $_SESSION[$key] : null;
+    }
+
+    public static function remove($key)
+    {
+        self::start();
+        if (isset($_SESSION[$key])) {
+            unset($_SESSION[$key]);
+        }
+    }
+
+    public static function setFlash($key, $message)
+    {
+        self::set($key, $message);
+    }
+
+    public static function getFlash($key)
+    {
+        $message = self::get($key);
+        self::remove($key);
+        return $message;
     }
 
 }

@@ -88,6 +88,7 @@ class BroadcastMessageRepository
                     'id_group' => $row['id_group'],
                     'waktu' => $row['waktu'],
                     'status' => $row['status'],
+                    'created_at' => $row['created_at']
                 ];
             }
         }

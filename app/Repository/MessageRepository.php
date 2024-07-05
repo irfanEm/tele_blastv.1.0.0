@@ -59,7 +59,7 @@ class MessageRepository
 
     public function getAll(): array
     {
-        $statement = $this->connection->query("SELECT id, judul, pesan, created_at, updated_at FROM messages");
+        $statement = $this->connection->query("SELECT id, judul, pesan, created_at, updated_at FROM messages ORDER BY created_at DESC");
         $messages = [];
         if($statement !== null){
             while ($row = $statement->fetch()) {
