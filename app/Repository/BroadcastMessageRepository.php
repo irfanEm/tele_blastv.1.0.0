@@ -77,7 +77,7 @@ class BroadcastMessageRepository
 
     public function getAll(): array
     {
-        $result = $this->connection->query("SELECT id, id_group, id_pesan, waktu, status FROM broadcast_messages");
+        $result = $this->connection->query("SELECT id, id_group, id_pesan, waktu, status, created_at FROM broadcast_messages");
         $broadcastMessages = [];
 
         if($result !== null) {
