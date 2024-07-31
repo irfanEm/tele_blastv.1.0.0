@@ -3,7 +3,7 @@
         'name' => 'prg_xml/tele_blastv.1.0.0',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '69ef9b5aa313703e676d1c6d3d4b168561781ed3',
+        'reference' => '8ad1700066bcc6967ec14520b90e6c3c55f80a66',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -220,7 +220,7 @@
         'prg_xml/tele_blastv.1.0.0' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '69ef9b5aa313703e676d1c6d3d4b168561781ed3',
+            'reference' => '8ad1700066bcc6967ec14520b90e6c3c55f80a66',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
