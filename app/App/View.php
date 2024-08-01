@@ -9,23 +9,29 @@ use IRFANEM\TELE_BLAST\Service\SessionService;
 
 class View 
 {
-    private SessionService $sessionService;
-    public function __construct()
+    private static ?SessionService $sessionService = null;
+
+    public static function initSessionService()
     {
-        $userRepository = new UserRepository(Database::getConnection());
-        $sessionRepository = new SessionRepository(Database::getConnection());
-        $sessionService = new SessionService($sessionRepository, $userRepository);
+        if (self::$sessionService === null) {
+            $userRepository = new UserRepository(Database::getConnection());
+            $sessionRepository = new SessionRepository(Database::getConnection());
+            self::$sessionService = new SessionService($sessionRepository, $userRepository);
+        }
     }
-    public static function render(string $view, $model)
+    public static function render(string $view, array $model)
     {
+        self::initSessionService();
+        $user = self::$sessionService->current();
+
         require_once __DIR__ . "/../View/header.php";
-        if($sessionService->current() == null){
-            require_once __DIR__ . "/../View/" . $view . ".php";
-        }else{
-            require_once __DIR__ . "/../View/Dashboard/header.php";
+        if($user !== null){
+            require_once __DIR__ . "/../View/Dashboard/header-dashboard.php";
             require_once __DIR__ . "/../View/Dashboard/aside.php";
             require_once __DIR__ . "/../View/" . $view . ".php";
-            require_once __DIR__ . "/../View/Dashboard/footer.php";
+            require_once __DIR__ . "/../View/Dashboard/footer-dashboard.php";
+        }else{
+            require_once __DIR__ . "/../View/" . $view . ".php";
         }
         require_once __DIR__ . "/../View/footer.php";
     }
