@@ -278,12 +278,12 @@
       <ul class="navbar-nav flex-row d-md-none">
         <li class="nav-item text-nowrap">
           <button class="nav-link px-3 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSearch" aria-controls="navbarSearch" aria-expanded="false" aria-label="Toggle search">
-            
+            cari
           </button>
         </li>
         <li class="nav-item text-nowrap">
           <button class="nav-link px-3 text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
-            collapse
+            menu
           </button>
         </li>
       </ul>
@@ -327,14 +327,16 @@
 
               <hr class="my-3">
 
-              <ul class="nav flex-column position-fixed bottom-0 start-0 mb-3 ms-5 bd-mode-toggle">
-                <!-- <li class="nav-item">
-                  <a class="nav-link d-flex align-items-center gap-2 disabled" href="#">
+              <ul class="nav flex-column mb-auto">
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center gap-2" href="#">
+                    <!-- <svg class="bi"><use xlink:href="#gear-wide-connected"></use></svg> -->
                     Settings
                   </a>
-                </li> -->
-                <li class="nav-item mb-2">
-                  <a class="nav-link d-flex align-items-center gap-2 btn btn-danger rounded text-bg-danger" href="/logout">
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link d-flex align-items-center gap-2" href="#">
+                    <!-- <svg class="bi"><use xlink:href="#door-closed"></use></svg> -->
                     Sign out
                   </a>
                 </li>
