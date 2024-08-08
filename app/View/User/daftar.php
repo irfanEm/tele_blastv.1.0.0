@@ -37,8 +37,8 @@
               </div>
           </div>
           <div class="my-2 d-flex justify-content-between">
-              <p class="text-secondary align-self-end" style="font-size:.9em;">Sudah punya akun ?<a href="/user/login" class="text-secondary fw-semibold text-decoration-none"> login disini.</a></p>
-              <button type="submit" class="btn btn-outline-success px-5 fw-bold">Daftar</button>
+              <p class="text-secondary align-self-end" style="font-size:.9em;">Sudah punya akun ? <a href="/user/login" class="text-secondary fw-semibold text-decoration-none">login disini.</a></p>
+              <button type="submit" class="btn btn-outline-dark px-4 fw-bold rounded-pill rounded">Daftar</button>
           </div>
           </form>
         </div>

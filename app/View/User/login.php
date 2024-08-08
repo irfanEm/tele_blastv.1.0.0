@@ -34,8 +34,8 @@
               </div>
           </div>
           <div class="my-2 d-flex justify-content-between align-items-end flex-sm-wrap">
-              <p class="text-secondary mt-sm-2" style="font-size:.9em;">Belum punya akun ?<a href="/user/daftar" class="text-secondary fw-semibold text-decoration-none"> daftar disini.</a></p>
-              <button type="submit" class="btn btn-outline-success px-5 fw-bold">Login</button>
+              <p class="text-secondary mt-sm-2" style="font-size:.9em;">Belum punya akun ? <a href="/user/daftar" class="text-secondary fw-semibold text-decoration-none">daftar disini.</a></p>
+              <button type="submit" class="btn btn-outline-dark px-4 fw-bold rounded-pill rounded">Login</button>
           </div>
           </form>
         </div>

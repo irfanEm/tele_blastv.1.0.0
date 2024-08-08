@@ -27,7 +27,6 @@ class View
         require_once __DIR__ . "/../View/header.php";
         if($user !== null){
             require_once __DIR__ . "/../View/Dashboard/header-dashboard.php";
-            require_once __DIR__ . "/../View/Dashboard/aside.php";
             require_once __DIR__ . "/../View/" . $view . ".php";
             require_once __DIR__ . "/../View/Dashboard/footer-dashboard.php";
         }else{

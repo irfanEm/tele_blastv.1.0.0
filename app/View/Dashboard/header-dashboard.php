@@ -1,53 +1,27 @@
-<div class="container-fluid border border-2 p-2 mt-3" style="height: v;">
-    <header class="py-3 mb-3 border-bottom">
-        <div class="container-fluid d-grid gap-3 align-items-center" style="grid-template-columns: 1fr 2fr;">
-        <div class="dropdown">
-            <a href="#" class="d-flex align-items-center col-lg-4 mb-2 mb-lg-0 link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+<div class="container-fluid p-2 border border-2 border-danger" style="height: 100vh;">
+    <header class="mb-2 border">
+        <nav class="navbar navbar-expand-lg bg-dark border-bottom navbar-dark">
+          <div class="container">
+            <a class="navbar-brand" href="#">
+              <!-- <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
+              Tele_blasT <span class="fw-bold">XML</span>
             </a>
-            <ul class="dropdown-menu text-small shadow" style="">
-            <li><a class="dropdown-item active" href="#" aria-current="page">Overview</a></li>
-            <li><a class="dropdown-item" href="#">Inventory</a></li>
-            <li><a class="dropdown-item" href="#">Customers</a></li>
-            <li><a class="dropdown-item" href="#">Products</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Reports</a></li>
-            <li><a class="dropdown-item" href="#">Analytics</a></li>
-            </ul>
-        </div>
-
-        <div class="d-flex align-items-center">
-            <form class="w-100 me-3" role="search">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-            </form>
-
-            <div class="flex-shrink-0 dropdown">
-            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle show" data-bs-toggle="dropdown" aria-expanded="true">
-                <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-            </a>
-            <ul class="dropdown-menu text-small shadow" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(0px, 34px);" data-popper-placement="bottom-end">
-                <li><a class="dropdown-item" href="#">New project...</a></li>
-                <li><a class="dropdown-item" href="#">Settings</a></li>
-                <li><a class="dropdown-item" href="#">Profile</a></li>
-                <li><hr class="dropdown-divider"></li>
-                <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+              <ul class="navbar-nav me-auto my-2 my-lg-0" style="--bs-scroll-height: 100px;">
+                <li class="nav-item"><a class="nav-link fw-semibold active" href="/">Dashboard</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="/group">Group Telegram</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="/pesan">Template Pesan</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="/broadcast-pesan">Broadcast Pesan</a></li>
+              </ul>
+              <form class="d-flex border-sm-top" role="search">
+                <a class="btn btn-outline-light rounded-pill px-3 fw-bold" href="/logout">Keluar</a>
+              </form>
             </div>
-        </div>
-        </div>
+          </div>
+        </nav>
     </header>
-    <!-- <header class="navbar navbar-dark p-2 border">
-        <h3>header section </h3>
-    </header> -->
-<div class="container-fluid border">
-
-<div class="container-fluid pb-3">
-  <div class="d-grid gap-3" style="grid-template-columns: 1fr 2fr;">
-    <div class="bg-body-tertiary border rounded-3">
-      <br><br><br><br><br><br><br><br><br><br>
-    </div>
-    <div class="bg-body-tertiary border rounded-3">
-      <br><br><br><br><br><br><br><br><br><br>
-    </div>
-  </div>
-</div>
+    <div class="container mb-2">
+        <div class="row ">
