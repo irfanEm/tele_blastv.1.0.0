@@ -2,7 +2,7 @@
     <header class="mb-2 border">
         <nav class="navbar navbar-expand-lg bg-dark border-bottom navbar-dark">
           <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
               <!-- <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"> -->
               Tele_blasT <span class="fw-bold">XML</span>
             </a>
