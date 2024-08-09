@@ -30,7 +30,7 @@ class SessionService
 
         $this->sessionRepository->save($session);
 
-        setcookie(self::$COOKIE_NAME, $session->id, time() + (3600 * 24 * 30), "/");
+        setcookie(self::$COOKIE_NAME, $session->id, time() + 3600, "/");
 
         return $session;
     }

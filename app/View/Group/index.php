@@ -20,11 +20,11 @@
                     <th scope="row"><?= $i ?></th>
                     <td><?= $groups['id'] ?></td>
                     <td><?= $groups['nama'] ?></td>
-                    <td><a href="https://t.me/<?= $groups['username'] ?>" class="text-decoration-none fw-semibold"><?= $groups['username'] ?></a></td>
+                    <td><a href="https://t.me/<?= $groups['username'] ?>" class="text-decoration-none fw-semibold" target="_blank"><?= $groups['username'] ?></a></td>
                     <td><?= $groups['created_at'] ?></td>
                     <td>
-                        <a href="/group/edit/<?= $groups['id'] ?>" class="btn btn-sm btn-outline-warning rounded rounded-pill px-md-3 mb-lg-0 mb-sm-2">edit</a>
-                        <a href="/group/hapus/<?= $groups['id'] ?>" class="btn btn-sm btn-outline-danger rounded rounded-pill px-md-2" onclick="confirm('apa kau yakin ?')">hapus</a>
+                        <a href="/group/edit/<?= $groups['id'] ?>" class="btn btn-sm btn-warning rounded rounded-pill px-md-3 mb-lg-0 mb-sm-2">edit</a>
+                        <a href="/group/hapus/<?= $groups['id'] ?>" class="btn btn-sm btn-danger rounded rounded-pill px-md-2" onclick="confirm('apa kau yakin ?')">hapus</a>
                     </td>
                 </tr>
                 <?php $i++; endforeach; ?>

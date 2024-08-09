@@ -7,15 +7,25 @@ use IRFANEM\TELE_BLAST\Config\Database;
 use IRFANEM\TELE_BLAST\Model\BCAddRequest;
 use IRFANEM\TELE_BLAST\Model\BCUpdateRequest;
 use IRFANEM\TELE_BLAST\Repository\BroadcastMessageRepository;
+use IRFANEM\TELE_BLAST\Repository\GroupRepository;
+use IRFANEM\TELE_BLAST\Repository\MessageRepository;
 use IRFANEM\TELE_BLAST\Service\BroadcastMessageService;
+use IRFANEM\TELE_BLAST\Service\GroupService;
+use IRFANEM\TELE_BLAST\Service\MessageService;
 
 class BroadcastMessageController
 {
+    private GroupService $groupService;
+    private MessageService $messageService;
     private BroadcastMessageService $broadcastMessageService;
 
     public function __construct()
     {
+        $groupRepo = new GroupRepository(Database::getConnection());
+        $messageRepo = new MessageRepository(Database::getConnection());
         $broadcastMessageRepository = new BroadcastMessageRepository(Database::getConnection());
+        $this->groupService = new GroupService($groupRepo);
+        $this->messageService = new MessageService($messageRepo);
         $this->broadcastMessageService = new BroadcastMessageService($broadcastMessageRepository);
     }
 
@@ -24,15 +34,19 @@ class BroadcastMessageController
         $broadcastMessages = $this->broadcastMessageService->getAllBc();
 
         View::render('BroadcastMessage/index', [
-            'title' => 'Data Broadcast Message',
+            'title' => 'Pesan Siaran',
             'broadcastMessages' => $broadcastMessages
         ]);
     }
 
     public function tambahBcMessage()
     {
+        $groups = $this->groupService->getGroups();
+        $messages = $this->messageService->getAllMessages();
         View::render('BroadcastMessage/tambah', [
-            'title' => 'Tambah Broadcast Message'
+            'title' => 'Tambah Broadcast Message',
+            'groups' => $groups,
+            'messages' => $messages
         ]);
     }
 
@@ -92,6 +106,7 @@ class BroadcastMessageController
         $id = $_GET['id'];
         try{
             $this->broadcastMessageService->deleteBcMessage($id);
+            View::redirect("/broadcast-pesan");
         }catch(\Exception $e){
             View::render('BroadcastMessage/index', [
                 'title' => 'Data Broadcast Message',

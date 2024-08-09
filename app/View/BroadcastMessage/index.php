@@ -27,8 +27,8 @@
                     <td><?= $broadcastMessages['status'] ?></td>
                     <td><?= $broadcastMessages['created_at'] ?></td>
                     <td>
-                        <a href="/group/edit/<?= $broadcastMessages['id'] ?>" class="btn btn-sm btn-outline-warning rounded rounded-pill px-md-3 mb-lg-0 mb-sm-2">edit</a>
-                        <a href="/group/hapus/<?= $broadcastMessages['id'] ?>" class="btn btn-sm btn-outline-danger rounded rounded-pill px-md-2" onclick="confirm('apa kau yakin ?')">hapus</a>
+                        <a href="/broadcast-pesan/edit/<?= $broadcastMessages['id'] ?>" class="btn btn-sm btn-warning rounded rounded-pill px-md-3 mb-lg-0 mb-sm-2">edit</a>
+                        <a href="/broadcast-pesan/hapus/<?= $broadcastMessages['id'] ?>" class="btn btn-sm btn-danger rounded rounded-pill px-md-2" onclick="confirm('apa kau yakin ?')">hapus</a>
                     </td>
                 </tr>
                 <?php $i++; endforeach; ?>

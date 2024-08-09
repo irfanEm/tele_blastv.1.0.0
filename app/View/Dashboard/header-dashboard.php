@@ -17,7 +17,7 @@
                 <li class="nav-item"><a class="nav-link fw-semibold" href="/broadcast-pesan">Broadcast Pesan</a></li>
               </ul>
               <form class="d-flex border-sm-top" role="search">
-                <a class="btn btn-outline-light rounded-pill px-3 fw-bold" href="/logout">Keluar</a>
+                <a class="btn btn-outline-danger rounded-pill px-3 fw-bold" href="/logout">Keluar</a>
               </form>
             </div>
           </div>

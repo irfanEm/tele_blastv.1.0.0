@@ -12,14 +12,14 @@
       
       <div class="col-md-6 col-xs-12 p-3">
         <div class="d-flex flex-column justify-content-center">
-          <h1 class="fw-bolder px-md-3 px-sm-1 text-capitalize">Login User Tele Blast XML</h1>
+          <h1 class="fw-bolder px-md-3 px-sm-1">Login Tele_blasT XML</h1>
           <p class="text-secondary text-decoration-none px-md-3 px-sm-1 text-capitalize">  <nbsp>by : <a href="http://instagram.com/irfan.em" class="text-decoration-none text-success fw-bold">irfanEm</a></p>
         </div>
       </div>
       <div class="col-md-6 col-xs-12 p-3">
         <div class="d-flex flex-column justify-content-center p-3 rounded-3 shadow-lg">
           <div class="col-12 rounded p-2 my-3">
-            <h2 style="font-family: poppins;" class="fw-semibold">Tele-Blast XML v.1.0.0</h2>
+            <h2 style="font-family: poppins;" class="fw-semibold">Tele_blasT XML v.1.0.0</h2>
           </div>
           <form action="/user/login" method="post">
           <div class="my-3">

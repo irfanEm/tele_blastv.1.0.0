@@ -8,13 +8,27 @@
         </div>
     </div>
     <?php endif; ?>
+    <?php 
+        foreach($model['groups'] as $group) {
+            echo $group['id'] . "<br>";
+        }
+
+        foreach($model['messages'] as $message) {
+            echo $message['id'] . "<br>";
+        }
+    ?>
     <h2 class="mb-5 text-capitalize border-bottom border-dark py-2">Tambah Pesan Siaran.</h2>
     <a href="/broadcast-pesan" class="btn btn-sm btn-outline-dark mb-4 rounded rounded-pill fw-semibold">kembali</a>
     <div class="border rounded-3 p-3">
         <form action="/group" method="post">
             <div class="mb-3">
-                <label for="id" class="form-label">Id Group</label>
-                <input type="text" class="form-control" name="id" id="id" aria-describedby="emailHelp">
+                <label for="id" class="form-label">Group</label>
+                <select class="form-select" name="group_id" aria-label="Default select example">
+                    <option selected>Pilih group</option>
+                    <?php foreach($model['groups'] as $group) { ?>
+                        <option value="<?= $group['id'] ?>"><?= $group['nama'] ?></option>
+                    <?php } ?>
+                </select>
                 <div id="emailHelp" class="form-text">Pastikan id group benar, kesalahan id group akan menimbulkan <strong class="text-danger">error</strong>.</div>
             </div>
             <div class="mb-3">

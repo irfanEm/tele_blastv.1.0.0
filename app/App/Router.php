@@ -34,7 +34,6 @@ class Router
 
             $pattern = "#^" . $route['path'] . "$#";
             if(preg_match($pattern, $path, $variables) && $method == $route["method"]) {
-
                 //call middleware
                 foreach ($route['middleware'] as $middleware){
                     $instance = new $middleware;

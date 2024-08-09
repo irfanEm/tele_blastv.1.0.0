@@ -29,7 +29,7 @@ class GroupController
         $groups = $this->groupService->getGroups();
 
         View::render('Group/index', [
-            'title' => 'Grup Telegram',
+            'title' => 'Grup',
             'groups' => $groups
         ]);
     }

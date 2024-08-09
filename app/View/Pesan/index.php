@@ -23,8 +23,8 @@
                 <td><?= $messages['pesan'] ?></td>
                 <td><?= $messages['created_at'] ?></td>
                 <td class="text-center">
-                    <a href="/pesan/edit/<?= $messages['id'] ?>" class="btn btn-sm btn-outline-warning rounded rounded-pill px-md-3 mb-sm-2">edit</a>
-                    <a href="/pesan/hapus/<?= $messages['id'] ?>" class="btn btn-sm btn-outline-danger rounded rounded-pill px-md-2" onclick="confirm('apa kau yakin ?')">hapus</a>
+                    <a href="/pesan/edit/<?= $messages['id'] ?>" class="btn btn-sm btn-warning rounded rounded-pill px-md-3 mb-sm-2">edit</a>
+                    <a href="/pesan/hapus/<?= $messages['id'] ?>" class="btn btn-sm btn-danger rounded rounded-pill px-md-2" onclick="confirm('apa kau yakin ?')">hapus</a>
                 </td>
                 </tr>
                 <?php $i++; endforeach; ?>
