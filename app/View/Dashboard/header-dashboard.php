@@ -1,4 +1,4 @@
-<div class="container-fluid p-2 border border-2 border-danger" style="height: 100vh;">
+<div class="container-fluid" style="height: 100vh;">
     <header class="mb-2 border">
         <nav class="navbar navbar-expand-lg bg-dark border-bottom navbar-dark">
           <div class="container">
@@ -14,7 +14,7 @@
                 <li class="nav-item"><a class="nav-link fw-semibold active" href="/">Dashboard</a></li>
                 <li class="nav-item"><a class="nav-link fw-semibold" href="/group">Group Telegram</a></li>
                 <li class="nav-item"><a class="nav-link fw-semibold" href="/pesan">Template Pesan</a></li>
-                <li class="nav-item"><a class="nav-link fw-semibold" href="/broadcast-pesan">Broadcast Pesan</a></li>
+                <li class="nav-item"><a class="nav-link fw-semibold" href="/pesan-siaran">Pesan Siaran</a></li>
               </ul>
               <form class="d-flex border-sm-top" role="search">
                 <a class="btn btn-outline-danger rounded-pill px-3 fw-bold" href="/logout">Keluar</a>

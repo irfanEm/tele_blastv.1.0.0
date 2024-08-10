@@ -44,7 +44,7 @@ class BroadcastMessageController
         $groups = $this->groupService->getGroups();
         $messages = $this->messageService->getAllMessages();
         View::render('BroadcastMessage/tambah', [
-            'title' => 'Tambah Broadcast Message',
+            'title' => 'Tambah Pesan Siaran',
             'groups' => $groups,
             'messages' => $messages
         ]);
@@ -52,22 +52,23 @@ class BroadcastMessageController
 
     public function postTambahBcMessage()
     {
-        $request = new BCAddRequest();
-        $request->id = uniqid();
-        $request->messageId = $_POST['message_id'];
-        $request->groupId = $_POST['group_id'];
-        $request->waktu = $_POST['waktu'];
-        $request->status = $_POST['status'];
+        var_dump($_POST);
+        // $request = new BCAddRequest();
+        // $request->id = uniqid();
+        // $request->messageId = $_POST['message_id'];
+        // $request->groupId = $_POST['group_id'];
+        // $request->waktu = $_POST['waktu'];
+        // $request->status = $_POST['status'];
 
-        try{
-            $this->broadcastMessageService->simpanBc($request);
-            View::redirect('/broadcast-messages');
-        }catch(\Exception $e){
-            View::render('BroadcastMessage/tambah', [
-                'title' => 'Data Broadcast Message',
-                'error' => $e->getMessage()
-            ]);
-        }
+        // try{
+        //     $this->broadcastMessageService->simpanBc($request);
+        //     View::redirect('/broadcast-messages');
+        // }catch(\Exception $e){
+        //     View::render('BroadcastMessage/tambah', [
+        //         'title' => 'Data Broadcast Message',
+        //         'error' => $e->getMessage()
+        //     ]);
+        // }
     }
 
     public function updateBcMessage()

@@ -37,8 +37,9 @@ Router::add("GET", "/pesan/edit/([0-9a-zA-Z]*)", MessageController::class, "upda
 Router::add("POST", "/pesan/edit", MessageController::class, "postUpdateMessage", [MustLoginMiddleware::class]);
 Router::add("GET", "/pesan/hapus/([0-9a-zA-Z]*)", MessageController::class, "hapusPesan", [MustLoginMiddleware::class]);
 
-Router::add("GET", "/broadcast-pesan", BroadcastMessageController::class, "index", [MustLoginMiddleware::class]);
-Router::add("GET", "/broadcast-pesan/add", BroadcastMessageController::class, "tambahBcMessage", [MustLoginMiddleware::class]);
+Router::add("GET", "/pesan-siaran", BroadcastMessageController::class, "index", [MustLoginMiddleware::class]);
+Router::add("GET", "/pesan-siaran/tambah", BroadcastMessageController::class, "tambahBcMessage", [MustLoginMiddleware::class]);
+Router::add("POST", "/pesan-siaran", BroadcastMessageController::class, "postTambahBcMessage", [MustLoginMiddleware::class]);
 
 Router::add("GET", "/test/id/([0-9a-zA-Z]*)", TemplateController::class, "test", []);
 
