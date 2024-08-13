@@ -32,7 +32,7 @@
                 <?php foreach($model['groups'] as $group) { ?>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" name="groups[<?= $group['username'] ?>]" type="checkbox" value="<?= $group['id'] ?>" id="<?= $group['id'] ?>">
-                        <label class="form-check-label" for="flexCheckDefault">
+                        <label class="form-check-label" for="<?= $group['id'] ?>">
                             <?= $group['nama'] ?>
                         </label>
                     </div>
@@ -46,43 +46,43 @@
                 <label for="username" class="form-label">Hari </label>
                 <div class="form-check">
                     <input class="form-check-input" name="days[minggu]" type="checkbox" value="0" id="minggu">
-                    <label class="form-check-label text-capitalize" for="flexCheckDefault">
+                    <label class="form-check-label text-capitalize" for="minggu">
                         Minggu
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" name="days[senin]" type="checkbox" value="1" id="senin">
-                    <label class="form-check-label text-capitalize" for="flexCheckDefault">
+                    <label class="form-check-label text-capitalize" for="senin">
                         Senin
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" name="days[selasa]" type="checkbox" value="2" id="selasa">
-                    <label class="form-check-label text-capitalize" for="flexCheckDefault">
+                    <label class="form-check-label text-capitalize" for="selasa">
                         Selasa
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" name="days[rabu]" type="checkbox" value="3" id="rabu">
-                    <label class="form-check-label text-capitalize" for="flexCheckDefault">
+                    <label class="form-check-label text-capitalize" for="rabu">
                         rabu
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" name="days[kamis]" type="checkbox" value="4" id="kamis">
-                    <label class="form-check-label text-capitalize" for="flexCheckDefault">
+                    <label class="form-check-label text-capitalize" for="kamis">
                         kamis
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" name="days[jumat]" type="checkbox" value="5" id="jumat">
-                    <label class="form-check-label text-capitalize" for="flexCheckDefault">
+                    <label class="form-check-label text-capitalize" for="jumat">
                         jumat
                     </label>
                 </div>
                 <div class="form-check mb-3">
                     <input class="form-check-input" name="days[sabtu]" type="checkbox" value="6" id="sabtu">
-                    <label class="form-check-label text-capitalize" for="flexCheckDefault">
+                    <label class="form-check-label text-capitalize" for="sabtu">
                         sabtu
                     </label>
                 </div>

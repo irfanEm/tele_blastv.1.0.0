@@ -46,6 +46,7 @@ class BroadcastMessageService
             $broadcastMessage->id = $request->id;
             $broadcastMessage->messageId = $request->messageId;
             $broadcastMessage->groupId = $request->groupId;
+            $broadcastMessage->days = $request->days;
             $broadcastMessage->waktu = $request->waktu;
             $broadcastMessage->status = $request->status;
 
@@ -65,8 +66,8 @@ class BroadcastMessageService
 
     protected function validateSimpanBc(BCAddRequest $request)
     {
-        if($request->id == null || $request->messageId == null || $request->groupId == null || $request->waktu == null || $request->status == null ||
-        trim($request->id) == "" || trim($request->messageId) == "" || trim($request->groupId) == "" || trim($request->waktu) == "" || trim($request->status) == "")
+        if($request->id == null || $request->messageId == null || $request->groupId == null || $request->waktu == null || $request->days == null || $request->status == null ||
+        trim($request->id) == "" || trim($request->messageId) == "" || trim($request->groupId) == "" || trim($request->days) == "" || trim($request->waktu) == "" || trim($request->status) == "")
         {
             throw new ValidationException("Id pesan, group, waktu dan status wajib diisi !");
         }
