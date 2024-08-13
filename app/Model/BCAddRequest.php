@@ -5,8 +5,9 @@ namespace IRFANEM\TELE_BLAST\Model;
 class BCAddRequest
 {
     public ?string $id = null;
-    public ?string $groupId = null;
+    public ?array $groupId = null;
     public ?string $messageId = null;
     public ?string $waktu = null;
-    public ?int $status = 0;
+    public ?array $days = null;
+    public ?string $status = "off";
 }

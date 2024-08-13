@@ -52,13 +52,15 @@ class BroadcastMessageController
 
     public function postTambahBcMessage()
     {
-        var_dump($_POST);
-        // $request = new BCAddRequest();
-        // $request->id = uniqid();
-        // $request->messageId = $_POST['message_id'];
-        // $request->groupId = $_POST['group_id'];
-        // $request->waktu = $_POST['waktu'];
-        // $request->status = $_POST['status'];
+        echo json_encode($_POST, JSON_PRETTY_PRINT);
+        $request = new BCAddRequest();
+        $request->id = uniqid();
+        $request->messageId = $_POST['pesan_id'];
+        $request->groupId = $_POST['groups'];
+        $request->days = $_POST['days'];
+        $request->waktu = $_POST['waktu'];
+        $request->status = $_POST['status']?? null;
+        // echo json_encode($request, JSON_PRETTY_PRINT);
 
         // try{
         //     $this->broadcastMessageService->simpanBc($request);

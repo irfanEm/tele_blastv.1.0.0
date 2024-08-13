@@ -27,11 +27,11 @@
                 </select>
             </div>
             <div class="my-3">
-                <label for="nama" class="form-label">Pilih Group </label>
+                <label for="groups" class="form-label">Pilih Group </label>
                 <br>
                 <?php foreach($model['groups'] as $group) { ?>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" name="groups.<?= $group['id'] ?>" type="checkbox" value="<?= $group['id'] ?>" id="<?= $group['id'] ?>">
+                        <input class="form-check-input" name="groups[<?= $group['username'] ?>]" type="checkbox" value="<?= $group['id'] ?>" id="<?= $group['id'] ?>">
                         <label class="form-check-label" for="flexCheckDefault">
                             <?= $group['nama'] ?>
                         </label>
@@ -45,46 +45,51 @@
             <div class="mb-3">
                 <label for="username" class="form-label">Hari </label>
                 <div class="form-check">
-                    <input class="form-check-input" name="minggu" type="checkbox" value="0" id="minggu">
+                    <input class="form-check-input" name="days[minggu]" type="checkbox" value="0" id="minggu">
                     <label class="form-check-label text-capitalize" for="flexCheckDefault">
                         Minggu
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" name="senin" type="checkbox" value="1" id="senin">
+                    <input class="form-check-input" name="days[senin]" type="checkbox" value="1" id="senin">
                     <label class="form-check-label text-capitalize" for="flexCheckDefault">
                         Senin
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" name="selasa" type="checkbox" value="2" id="selasa">
+                    <input class="form-check-input" name="days[selasa]" type="checkbox" value="2" id="selasa">
                     <label class="form-check-label text-capitalize" for="flexCheckDefault">
                         Selasa
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" name="rabu" type="checkbox" value="3" id="rabu">
+                    <input class="form-check-input" name="days[rabu]" type="checkbox" value="3" id="rabu">
                     <label class="form-check-label text-capitalize" for="flexCheckDefault">
                         rabu
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" name="kamis" type="checkbox" value="4" id="kamis">
+                    <input class="form-check-input" name="days[kamis]" type="checkbox" value="4" id="kamis">
                     <label class="form-check-label text-capitalize" for="flexCheckDefault">
                         kamis
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" name="jumat" type="checkbox" value="5" id="jumat">
+                    <input class="form-check-input" name="days[jumat]" type="checkbox" value="5" id="jumat">
                     <label class="form-check-label text-capitalize" for="flexCheckDefault">
                         jumat
                     </label>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" name="sabtu" type="checkbox" value="6" id="sabtu">
+                <div class="form-check mb-3">
+                    <input class="form-check-input" name="days[sabtu]" type="checkbox" value="6" id="sabtu">
                     <label class="form-check-label text-capitalize" for="flexCheckDefault">
                         sabtu
                     </label>
+                </div>
+                <label for="username" class="form-label">Status </label>
+                <div class="form-check form-switch mb-3">
+                    <input class="form-check-input" type="checkbox" role="switch" name="status" id="flexSwitchCheckChecked" checked>
+                    <label class="form-check-label" for="flexSwitchCheckChecked">aktif</label>
                 </div>
             </div>
             
