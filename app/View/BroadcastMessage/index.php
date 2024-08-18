@@ -2,8 +2,8 @@
     <div class="container my-3">
     <h2 class="mb-5 text-capitalize border-bottom border-dark py-2">Data Pesan Siaran.</h2>
     <a href="/pesan-siaran/tambah" class="btn btn-outline-dark mb-4 rounded rounded-pill fw-semibold">tambah</a>
-    <div class="border rounded-3 p-3">
-        <table class="table table-hover table-borderless table-responsive">
+    <div class="border rounded-3 p-3 table-responsive">
+        <table class="table table-hover table-borderless">
             <thead class="border-bottom border-dark">
                 <tr>
                 <th scope="col">#</th>
@@ -27,7 +27,7 @@
                     <td class="align-middle"><?= $broadcastMessages['status'] ?></td>
                     <td><?= $broadcastMessages['created_at'] ?></td>
                     <td>
-                        <a href="/pesan-siaran/edit/<?= $broadcastMessages['id'] ?>" class="btn btn-sm btn-warning rounded rounded-pill px-md-3 mb-lg-0 mb-sm-2">edit</a>
+                        <a href="/pesan-siaran/edit/<?= $broadcastMessages['id'] ?>" class="btn btn-sm btn-warning rounded rounded-pill px-md-3 mb-2">edit</a>
                         <a href="/pesan-siaran/hapus/<?= $broadcastMessages['id'] ?>" class="btn btn-sm btn-danger rounded rounded-pill px-md-2" onclick="confirm('apa kau yakin ?')">hapus</a>
                     </td>
                 </tr>

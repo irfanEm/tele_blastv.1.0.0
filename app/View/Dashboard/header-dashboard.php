@@ -17,7 +17,7 @@
                 <li class="nav-item"><a class="nav-link fw-semibold" href="/pesan-siaran">Pesan Siaran</a></li>
               </ul>
               <form class="d-flex border-sm-top" role="search">
-                <a class="btn btn-outline-danger rounded-pill px-3 fw-bold" href="/logout">Keluar</a>
+                <a class="btn btn-outline-danger rounded-lg-pill rounded-xl-pill rounded-md-pill rounded-sm-3 mb-lg-0 mb-sm-3 px-3 fw-bold" href="/logout">Keluar</a>
               </form>
             </div>
           </div>

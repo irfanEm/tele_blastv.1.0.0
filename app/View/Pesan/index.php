@@ -17,12 +17,12 @@
             <tbody class="table-group-divider">
                 <?php $i = 1; foreach($model['messages'] as $messages) : ?>
                 <tr>
-                <th scope="row"><?= $i ?></th>
-                <td><?= $messages['id'] ?></td>
-                <td><?= $messages['judul'] ?></td>
-                <td><?= $messages['pesan'] ?></td>
-                <td><?= $messages['created_at'] ?></td>
-                <td class="text-center">
+                <th class="align-middle" scope="row"><?= $i ?></th>
+                <td class="align-middle"><?= $messages['id'] ?></td>
+                <td class="align-middle"><?= $messages['judul'] ?></td>
+                <td class="align-middle"><?= $messages['pesan'] ?></td>
+                <td class="align-middle"><?= $messages['created_at'] ?></td>
+                <td class="text-center align-middle">
                     <a href="/pesan/edit/<?= $messages['id'] ?>" class="btn btn-sm btn-warning rounded rounded-pill px-md-3 mb-sm-2">edit</a>
                     <a href="/pesan/hapus/<?= $messages['id'] ?>" class="btn btn-sm btn-danger rounded rounded-pill px-md-2" onclick="confirm('apa kau yakin ?')">hapus</a>
                 </td>

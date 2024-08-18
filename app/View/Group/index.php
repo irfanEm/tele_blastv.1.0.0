@@ -17,12 +17,12 @@
             <tbody class="table-group-divider">
                 <?php $i = 1; foreach($model['groups'] as $groups) : ?>
                 <tr>
-                    <th scope="row"><?= $i ?></th>
-                    <td><?= $groups['id'] ?></td>
-                    <td><?= $groups['nama'] ?></td>
-                    <td><a href="https://t.me/<?= $groups['username'] ?>" class="text-decoration-none fw-semibold" target="_blank"><?= $groups['username'] ?></a></td>
-                    <td><?= $groups['created_at'] ?></td>
-                    <td>
+                    <th class="align-middle" scope="row"><?= $i ?></th>
+                    <td class="align-middle"><?= $groups['id'] ?></td>
+                    <td class="align-middle"><?= $groups['nama'] ?></td>
+                    <td class="align-middle"><a href="https://t.me/<?= $groups['username'] ?>" class="text-decoration-none fw-semibold" target="_blank"><?= $groups['username'] ?></a></td>
+                    <td class="align-middle"><?= $groups['created_at'] ?></td>
+                    <td class="align-middle">
                         <a href="/group/edit/<?= $groups['id'] ?>" class="btn btn-sm btn-warning rounded rounded-pill px-md-3 mb-lg-0 mb-sm-2">edit</a>
                         <a href="/group/hapus/<?= $groups['id'] ?>" class="btn btn-sm btn-danger rounded rounded-pill px-md-2" onclick="confirm('apa kau yakin ?')">hapus</a>
                     </td>
