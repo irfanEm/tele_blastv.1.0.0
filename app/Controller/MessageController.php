@@ -24,9 +24,11 @@ class MessageController
     public function index()
     {
         $messages = $this->messageService->getAllMessages();
+        $alert = Alert::getFlash('alert'); // Ambil pesan dari session
         View::render('Pesan/index', [
             'title' => 'Pesan',
-            'messages' => $messages
+            'messages' => $messages,
+            'alert' => $alert // Kirim pesan ke view
         ]);
     }
 
@@ -44,11 +46,11 @@ class MessageController
         $request->judul = $_POST['judul'];
         $request->pesan = $_POST['pesan'];
 
-        try{
+        try {
             $this->messageService->addMessage($request);
-            echo "<script>alert('Berhasil menambah pesan.');</script>";
+            Alert::setFlash("alert", ["success" => "Pesan berhasil ditambahkan."]); // Set pesan ke session
             View::redirect('/pesan');
-        }catch(ValidationException $er){
+        } catch (ValidationException $er) {
             View::render('Pesan/tambah', [
                 'title' => 'Tambah pesan',
                 'error' => $er->getMessage()
@@ -75,17 +77,14 @@ class MessageController
         $request->judul = $_POST['judul'];
         $request->pesan = $_POST['pesan'];
 
-        try{
-
+        try {
             $this->messageService->updateMessage($request);
-            Alert::setFlash("alert", ["success"=>"Data berhasil diedit."]);
+            Alert::setFlash("alert", ["success" => "Pesan berhasil diperbarui."]); // Set pesan ke session
             View::redirect("/pesan");
-
-        }catch(ValidationException $e){
+        } catch (ValidationException $e) {
             $error = $e->getMessage();
-            Alert::setFlash("alert", ["danger"=>"Data gagal diedit : $error"]);
-            View::redirect("pesan/update/$request->id");
-
+            Alert::setFlash("alert", ["danger" => "Data gagal diperbarui: $error"]); // Set pesan gagal ke session
+            View::redirect("pesan/edit/$request->id");
         }
     }
 
@@ -95,6 +94,7 @@ class MessageController
         
         try{
             $this->messageService->deleteMessage($idMsg);
+            Alert::setFlash("alert", ["success" => "Pesan berhasil dihapus."]); // Set pesan ke session
             View::redirect('/pesan');
         }catch(ValidationException $e){
             View::render('Pesan/index', [

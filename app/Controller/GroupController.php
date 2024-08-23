@@ -27,10 +27,11 @@ class GroupController
     public function index(): void
     {
         $groups = $this->groupService->getGroups();
-
+        $alert = Alert::getFlash('alert'); // Ambil pesan dari session
         View::render('Group/index', [
             'title' => 'Grup',
-            'groups' => $groups
+            'groups' => $groups,
+            'alert' => $alert // Kirim pesan ke view
         ]);
     }
 
@@ -50,6 +51,7 @@ class GroupController
 
         try{
             $this->groupService->tambahGrup($request);
+            Alert::setFlash("alert", ["success" => "Group berhasil ditambahkan."]); // Set pesan ke session
             View::redirect('/group');
         }catch(\Exception $e){
             View::render('Group/tambah',[
@@ -82,13 +84,11 @@ class GroupController
 
         try{
             $this->groupService->updateGroup($request);
-            Alert::setFlash("alert", ["success" => "Data berhasil di edit."]);
-
-            Alert::getFlash("alert");
+            Alert::setFlash("alert", ["success" => "Group berhasil diperbarui."]); // Set pesan ke session
             View::redirect('/group');
         }catch(\Exception $e){
             $error = $e->getMessage();
-            Alert::setFlash("alert", ["danger" => "Data gagal diedit : $error"]);
+            Alert::setFlash("alert", ["danger" => "Group gagal diperbarui : " . $error . "."]); // Set pesan ke session
             View::redirect("group/edit/$request->id");
         }
     }
@@ -99,6 +99,7 @@ class GroupController
         $request->id = htmlspecialchars($id);
         try{
             $this->groupService->deleteById($request);
+            Alert::setFlash("alert", ["success" => "Group berhasil dihapus."]); // Set pesan ke session
             View::redirect("/group");
         }catch (\Exception $e){
             View::render('Group/tambah',[

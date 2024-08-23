@@ -3,15 +3,16 @@
 namespace IRFANEM\TELE_BLAST\Controller;
 
 use IRFANEM\TELE_BLAST\App\View;
+use IRFANEM\TELE_BLAST\Helper\Alert;
 use IRFANEM\TELE_BLAST\Config\Database;
 use IRFANEM\TELE_BLAST\Model\BCAddRequest;
+use IRFANEM\TELE_BLAST\Service\GroupService;
 use IRFANEM\TELE_BLAST\Model\BCUpdateRequest;
-use IRFANEM\TELE_BLAST\Repository\BroadcastMessageRepository;
+use IRFANEM\TELE_BLAST\Service\MessageService;
 use IRFANEM\TELE_BLAST\Repository\GroupRepository;
 use IRFANEM\TELE_BLAST\Repository\MessageRepository;
 use IRFANEM\TELE_BLAST\Service\BroadcastMessageService;
-use IRFANEM\TELE_BLAST\Service\GroupService;
-use IRFANEM\TELE_BLAST\Service\MessageService;
+use IRFANEM\TELE_BLAST\Repository\BroadcastMessageRepository;
 
 class BroadcastMessageController
 {
@@ -32,10 +33,11 @@ class BroadcastMessageController
     public function index()
     {
         $broadcastMessages = $this->broadcastMessageService->getAllBc();
-
+        $alert = Alert::getFlash('alert'); // Ambil pesan dari session
         View::render('BroadcastMessage/index', [
             'title' => 'Pesan Siaran',
-            'broadcastMessages' => $broadcastMessages
+            'broadcastMessages' => $broadcastMessages,
+            'alert' => $alert // Kirim pesan ke view
         ]);
     }
 
@@ -64,6 +66,7 @@ class BroadcastMessageController
 
         try{
             $this->broadcastMessageService->simpanBc($request);
+            Alert::setFlash("alert", ["success" => "Pesan siaran berhasil ditambahkan."]); // Set pesan ke session
             View::redirect('/pesan-siaran');
         }catch(\Exception $e){
             View::render('BroadcastMessage/tambah', [
@@ -77,7 +80,6 @@ class BroadcastMessageController
     {
         $id = $_GET['id'];
         $bcMessage = $this->broadcastMessageService->getCurrent($id);
-
         View::render('BroadcastMessage/index', [
             'title' => 'Tambah Broadcast Message',
             'broadcastMessage' => $bcMessage
@@ -95,6 +97,7 @@ class BroadcastMessageController
 
         try{
             $this->broadcastMessageService->updateBc($request);
+            Alert::setFlash("alert", ["success" => "Pesan siaran berhasil diperbarui."]); // Set pesan ke session
             View::redirect('/broadcast-message');
         }catch(\Exception $e){
             View::render('BroadcastMessage/update', [
@@ -109,6 +112,7 @@ class BroadcastMessageController
         $id = $_GET['id'];
         try{
             $this->broadcastMessageService->deleteBcMessage($id);
+            Alert::setFlash("alert", ["success" => "Pesan siaran berhasil dihapus."]); // Set pesan ke session
             View::redirect("/broadcast-pesan");
         }catch(\Exception $e){
             View::render('BroadcastMessage/index', [

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 use IRFANEM\TELE_BLAST\App\Router;
 use IRFANEM\TELE_BLAST\Controller\HomeController;
