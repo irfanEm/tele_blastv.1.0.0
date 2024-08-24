@@ -62,28 +62,32 @@ class BroadcastMessageController
         $request->days = json_encode($_POST['days']);
         $request->waktu = $_POST['waktu'];
         $request->status = $_POST['status'] ?? "off";
-        var_dump($request, JSON_PRETTY_PRINT);
 
         try{
             $this->broadcastMessageService->simpanBc($request);
             Alert::setFlash("alert", ["success" => "Pesan siaran berhasil ditambahkan."]); // Set pesan ke session
             View::redirect('/pesan-siaran');
         }catch(\Exception $e){
+            $groups = $this->groupService->getGroups();
+            $messages = $this->messageService->getAllMessages();
             View::render('BroadcastMessage/tambah', [
                 'title' => 'Data Broadcast Message',
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
+                'groups' => $groups,
+                'messages' => $messages
             ]);
         }
     }
 
-    public function updateBcMessage()
+    public function updateBcMessage($ps_id)
     {
-        $id = $_GET['id'];
+        $id = $ps_id;
         $bcMessage = $this->broadcastMessageService->getCurrent($id);
-        View::render('BroadcastMessage/index', [
-            'title' => 'Tambah Broadcast Message',
-            'broadcastMessage' => $bcMessage
-        ]);
+        print_r(json_encode($bcMessage->groupId));
+        // View::render('BroadcastMessage/edit', [
+        //     'title' => 'Edit pesan siaran',
+        //     'broadcastMessage' => $bcMessage
+        // ]);
     }
 
     public function postUpdateBcMessage()
